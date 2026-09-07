@@ -1,0 +1,6 @@
+{
+  "name": "Momoda Asian Street Food",
+  "description": "Momoda Asian Street Food in Pound St, Edgeworthstown, Co. Longford. Authentic wok dishes, starters, noodles, and digital order slip for table service.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

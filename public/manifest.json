@@ -1,0 +1,21 @@
+{
+  "name": "Momoda Asian Street Food",
+  "short_name": "Momoda",
+  "description": "Momoda Asian Street Food in Pound St, Edgeworthstown. Digital Dining & Table Order Slip System.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#dc2626",
+  "icons": [
+    {
+      "src": "/momoda-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/momoda-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
