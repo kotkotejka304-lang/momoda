@@ -14,12 +14,13 @@ import { RestaurantInfoModal } from './components/RestaurantInfoModal';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { BackToTopButton } from './components/BackToTopButton';
 import { MomodaLogo } from './components/MomodaLogo';
-import { ShoppingBag, Smartphone, Phone, MapPin, Check, Clock, Truck, ShieldAlert, ExternalLink, CupSoda, ArrowRight, Zap } from 'lucide-react';
+import { ShoppingBag, Smartphone, Phone, MapPin, Check, Clock, Truck, ShieldAlert, ExternalLink, CupSoda, ArrowRight, Zap, Globe } from 'lucide-react';
 import { useLanguage } from './i18n/LanguageContext';
+import { SUPPORTED_LANGUAGES } from './i18n/translations';
 import { getLocalizedDish } from './i18n/dishTranslations';
 
 export default function App() {
-  const { language, t } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
 
   // State
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -626,7 +627,33 @@ export default function App() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto border-t border-stone-200 dark:border-neutral-800/80 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-2xs text-stone-500 gap-3">
+        {/* Global Language Selector in Footer */}
+        <div className="max-w-7xl mx-auto border-t border-stone-200 dark:border-neutral-800/80 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-xs font-semibold text-stone-700 dark:text-stone-300">
+            <Globe className="w-4 h-4 text-red-600 dark:text-red-400" />
+            <span>Select Language / Roghnaigh Teanga:</span>
+          </div>
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center">
+            {SUPPORTED_LANGUAGES.map((l) => (
+              <button
+                key={l.code}
+                type="button"
+                id={`footer-lang-${l.code}`}
+                onClick={() => setLanguage(l.code)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium transition cursor-pointer flex items-center gap-1.5 border active:scale-95 ${
+                  language === l.code
+                    ? 'bg-red-600 text-white border-red-500 font-bold shadow-xs'
+                    : 'bg-stone-100 hover:bg-stone-200 dark:bg-neutral-900 dark:hover:bg-neutral-850 text-stone-800 dark:text-stone-200 border-stone-200 dark:border-neutral-800'
+                }`}
+              >
+                <span>{l.flag}</span>
+                <span>{l.nativeName}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto border-t border-stone-200 dark:border-neutral-800/80 mt-6 pt-6 flex flex-col sm:flex-row items-center justify-between text-2xs text-stone-500 gap-3">
           <p>© {new Date().getFullYear()} Momoda Asian Street Food, Edgeworthstown. All rights reserved.</p>
           <p>Digital Dining & Table Order Slip System</p>
         </div>

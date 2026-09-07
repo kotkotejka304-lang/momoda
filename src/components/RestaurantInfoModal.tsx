@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { X, MapPin, Phone, Clock, Truck, ShieldAlert, ExternalLink, Calendar, Smartphone } from 'lucide-react';
+import { X, MapPin, Phone, Clock, Truck, ShieldAlert, ExternalLink, Calendar, Smartphone, Globe } from 'lucide-react';
 import { RESTAURANT_INFO, ALLERGENS_LIST, DELIVERY_DEALS } from '../data/menuData';
 import { MomodaLogo } from './MomodaLogo';
 import { useLanguage } from '../i18n/LanguageContext';
+import { SUPPORTED_LANGUAGES } from '../i18n/translations';
 
 interface RestaurantInfoModalProps {
   isOpen: boolean;
@@ -15,7 +16,7 @@ export const RestaurantInfoModal: React.FC<RestaurantInfoModalProps> = ({
   onClose,
   initialTab = 'hours',
 }) => {
-  const { t } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'hours' | 'contact' | 'deals' | 'allergens'>(initialTab);
 
   // Synchronise active tab whenever initialTab or modal open state updates
@@ -405,14 +406,34 @@ export const RestaurantInfoModal: React.FC<RestaurantInfoModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-3.5 sm:p-4 border-t border-stone-200 dark:border-neutral-800 bg-stone-50 dark:bg-neutral-900 flex items-center justify-between pb-safe shrink-0">
-          <span className="text-2xs text-stone-500 dark:text-stone-400">
-            Momoda Asian Street Food • Edgeworthstown
-          </span>
+        <div className="p-3.5 sm:p-4 border-t border-stone-200 dark:border-neutral-800 bg-stone-50 dark:bg-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-3 pb-safe shrink-0">
+          <div className="flex items-center gap-1.5 flex-wrap justify-center sm:justify-start">
+            <span className="text-2xs text-stone-500 dark:text-stone-400 font-medium flex items-center gap-1">
+              <Globe className="w-3 h-3 text-red-500" />
+              Lang:
+            </span>
+            {SUPPORTED_LANGUAGES.map((l) => (
+              <button
+                key={l.code}
+                type="button"
+                id={`modal-lang-${l.code}`}
+                onClick={() => setLanguage(l.code)}
+                className={`px-2 py-1 rounded-lg text-xs flex items-center gap-1 transition cursor-pointer border active:scale-95 ${
+                  language === l.code
+                    ? 'bg-red-600 text-white border-red-500 font-bold shadow-xs'
+                    : 'bg-white dark:bg-neutral-950 text-stone-700 dark:text-stone-300 border-stone-200 dark:border-neutral-800 hover:bg-stone-100'
+                }`}
+              >
+                <span>{l.flag}</span>
+                <span className="text-2xs font-semibold">{l.code.toUpperCase()}</span>
+              </button>
+            ))}
+          </div>
+
           <button
             type="button"
             onClick={onClose}
-            className="px-5 py-2 min-h-[38px] rounded-xl bg-stone-200 hover:bg-stone-300 dark:bg-neutral-950 dark:hover:bg-neutral-800 text-stone-900 dark:text-white font-semibold text-xs border border-stone-300 dark:border-neutral-700 transition cursor-pointer"
+            className="px-5 py-2 min-h-[38px] rounded-xl bg-stone-200 hover:bg-stone-300 dark:bg-neutral-950 dark:hover:bg-neutral-800 text-stone-900 dark:text-white font-semibold text-xs border border-stone-300 dark:border-neutral-700 transition cursor-pointer w-full sm:w-auto"
           >
             {t.closeBtn}
           </button>

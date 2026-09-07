@@ -77,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Main Sticky Header */}
-      <header className="sticky top-0 z-30 w-full max-w-full overflow-hidden bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md border-b border-stone-200 dark:border-neutral-800 shadow-xs dark:shadow-md transition-colors duration-300">
+      <header className="sticky top-0 z-30 w-full max-w-full bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md border-b border-stone-200 dark:border-neutral-800 shadow-xs dark:shadow-md transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-2.5 sm:px-6 h-15 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-4">
           {/* Brand Logo */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">

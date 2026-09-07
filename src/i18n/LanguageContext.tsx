@@ -17,14 +17,22 @@ const STORAGE_KEY = 'momoda_user_language';
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<SupportedLanguage>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem(STORAGE_KEY) as SupportedLanguage;
-      if (saved && SUPPORTED_LANGUAGES.some((l) => l.code === saved)) {
-        return saved;
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY) as SupportedLanguage;
+        if (saved && SUPPORTED_LANGUAGES.some((l) => l.code === saved)) {
+          return saved;
+        }
+      } catch (e) {
+        console.warn('Could not read language from localStorage:', e);
       }
       // Check browser navigator language
-      const browserLang = navigator.language?.slice(0, 2).toLowerCase();
-      if (browserLang === 'ga' || browserLang === 'ru' || browserLang === 'es' || browserLang === 'de' || browserLang === 'uk') {
-        return browserLang as SupportedLanguage;
+      try {
+        const browserLang = navigator.language?.slice(0, 2).toLowerCase();
+        if (browserLang === 'ga' || browserLang === 'ru' || browserLang === 'es' || browserLang === 'de' || browserLang === 'uk') {
+          return browserLang as SupportedLanguage;
+        }
+      } catch {
+        // Ignore navigator errors
       }
     }
     return 'en';
@@ -35,7 +43,11 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const setLanguage = (lang: SupportedLanguage) => {
     setLanguageState(lang);
     if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEY, lang);
+      try {
+        localStorage.setItem(STORAGE_KEY, lang);
+      } catch (e) {
+        console.warn('Could not save language to localStorage:', e);
+      }
     }
   };
 
