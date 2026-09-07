@@ -210,7 +210,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, TranslationDictionary> = {
     heroFeatureDeals: 'Deals from €7',
     heroFeatureAllergens: '14 Allergens Guide',
     heroExploreMenu: 'Explore Menu',
-    heroKitchenStatus: 'Fresh Daily • Table Order Slip',
+    heroKitchenStatus: 'Fresh Daily • Guest Order Slip',
 
     catAll: 'Full Menu',
     catStarters: 'Starters',
@@ -274,7 +274,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, TranslationDictionary> = {
     servingChilled: 'Chilled & Fresh',
 
     drawerTitle: 'Digital Order Slip',
-    drawerTerminalId: 'Table Order Slip',
+    drawerTerminalId: 'Guest Order Slip',
     diningTypeLabel: 'Dining Mode',
     diningDineIn: 'Dine-In (Table)',
     diningTakeaway: 'Takeaway / Collection',
@@ -423,7 +423,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, TranslationDictionary> = {
     servingChilled: 'FUAR & ÚR',
 
     drawerTitle: 'Duillín Ordaithe Digiteach',
-    drawerTerminalId: 'Duillín Tábla',
+    drawerTerminalId: 'Duillín Ordaithe',
     diningTypeLabel: 'Modh Itheacháin',
     diningDineIn: 'Ithe Isteach (Tábla)',
     diningTakeaway: 'Beir Leat / Bailiúchán',
@@ -572,7 +572,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, TranslationDictionary> = {
     servingChilled: 'ПОДАЕТСЯ ОХЛАЖДЕННЫМ',
 
     drawerTitle: 'Цифровой Чек Заказа',
-    drawerTerminalId: 'Чек столика',
+    drawerTerminalId: 'Чек заказа',
     diningTypeLabel: 'Режим заказа',
     diningDineIn: 'В зале (Столик)',
     diningTakeaway: 'На вынос / С собой',
@@ -721,7 +721,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, TranslationDictionary> = {
     servingChilled: 'FRESCO Y FRÍO',
 
     drawerTitle: 'Comanda Digital',
-    drawerTerminalId: 'Comanda de Mesa',
+    drawerTerminalId: 'Comanda de Pedido',
     diningTypeLabel: 'Modalidad',
     diningDineIn: 'En Sala (Mesa)',
     diningTakeaway: 'Para Llevar / Recoger',
@@ -870,7 +870,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, TranslationDictionary> = {
     servingChilled: 'EISKÜHL SERVIERT',
 
     drawerTitle: 'Digitaler Bestellschein',
-    drawerTerminalId: 'Tisch-Bestellschein',
+    drawerTerminalId: 'Gäste-Bestellschein',
     diningTypeLabel: 'Bestellart',
     diningDineIn: 'Im Restaurant (Tisch)',
     diningTakeaway: 'Zum Mitnehmen / Abholung',
@@ -1019,7 +1019,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, TranslationDictionary> = {
     servingChilled: 'ПОДАЄТЬСЯ ХОЛОДНИМ',
 
     drawerTitle: 'Цифровий Чек Замовлення',
-    drawerTerminalId: 'Чек столика',
+    drawerTerminalId: 'Чек замовлення',
     diningTypeLabel: 'Режим замовлення',
     diningDineIn: 'У залі (Столик)',
     diningTakeaway: 'Із собою / Самовивіз',

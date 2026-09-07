@@ -1,6 +1,6 @@
 import React from 'react';
 import { MenuItem } from '../types';
-import { Flame, Plus, Check, Sparkles, Clock, SlidersHorizontal } from 'lucide-react';
+import { Flame, Plus, Check, Sparkles, SlidersHorizontal } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { getLocalizedDish } from '../i18n/dishTranslations';
 
@@ -69,14 +69,6 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
             <span className="text-stone-300 hidden sm:inline">
               {getSpicyText(item.spicyLevel)}
             </span>
-          </div>
-        )}
-
-        {/* Prep time badge */}
-        {item.prepTimeMinutes && (
-          <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-neutral-950/85 backdrop-blur-xs text-stone-300 text-2xs flex items-center gap-1 border border-neutral-800">
-            <Clock className="w-3 h-3 text-amber-400" />
-            <span>{t.prepTimePrefix}{item.prepTimeMinutes}m</span>
           </div>
         )}
       </div>

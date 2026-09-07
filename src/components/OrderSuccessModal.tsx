@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, Clock, Utensils } from 'lucide-react';
+import { CheckCircle2, Utensils } from 'lucide-react';
 import { CartItem } from '../types';
 import { useLanguage } from '../i18n/LanguageContext';
 import { getLocalizedDish } from '../i18n/dishTranslations';
@@ -8,7 +8,6 @@ interface OrderSuccessModalProps {
   isOpen: boolean;
   onClose: () => void;
   orderCode: string;
-  tableNumber?: string;
   orderType?: 'waiter' | 'paid';
   items: CartItem[];
   total: number;
@@ -50,22 +49,16 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
 
         <div className="p-4 sm:p-6 space-y-4 text-left text-xs pb-safe">
           {/* Order Details Grid */}
-          <div className="p-3 sm:p-4 bg-stone-50 dark:bg-neutral-900 rounded-2xl border border-stone-200 dark:border-neutral-800 grid grid-cols-2 gap-2.5 sm:gap-3 text-stone-600 dark:text-stone-400">
+          <div className="p-3 sm:p-4 bg-stone-50 dark:bg-neutral-900 rounded-2xl border border-stone-200 dark:border-neutral-800 grid grid-cols-3 gap-2 text-stone-600 dark:text-stone-400 text-center">
             <div>
               <span className="block text-2xs text-stone-500 font-medium uppercase">{t.waiterVerificationCode}</span>
               <span className="font-bold text-red-600 dark:text-red-400 text-sm tracking-wide">{orderCode}</span>
             </div>
             <div>
               <span className="block text-2xs text-stone-500 font-medium uppercase">{t.subtotalLabel}</span>
-              <span className="font-bold text-stone-900 dark:text-white text-sm flex items-center gap-1">
+              <span className="font-bold text-stone-900 dark:text-white text-sm flex items-center justify-center gap-1">
                 <Utensils className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400" />
-                {totalDishCount} dishes
-              </span>
-            </div>
-            <div>
-              <span className="block text-2xs text-stone-500 font-medium uppercase">{t.prepTimePrefix}</span>
-              <span className="font-bold text-amber-600 dark:text-amber-400 text-sm flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5" /> 8–12 Min
+                {totalDishCount}
               </span>
             </div>
             <div>
@@ -103,7 +96,7 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           </div>
 
           <div className="text-2xs text-stone-600 dark:text-stone-400 text-center bg-stone-50 dark:bg-neutral-900/60 p-2.5 rounded-xl border border-stone-200 dark:border-neutral-800">
-            💳 Cash or card payment handled directly with your waiter at your table.
+            💳 Cash or card payment handled directly with your waiter.
           </div>
 
           {/* Close Action */}

@@ -9,8 +9,6 @@ interface WaiterOrderSlipModalProps {
   isOpen: boolean;
   onClose: () => void;
   cartItems: CartItem[];
-  tableNumber?: string;
-  onChangeTable?: (newTable: string) => void;
   onOrderAcknowledged: (orderCode: string) => void;
 }
 
@@ -18,8 +16,6 @@ export const WaiterOrderSlipModal: React.FC<WaiterOrderSlipModalProps> = ({
   isOpen,
   onClose,
   cartItems,
-  tableNumber = 'Table 1',
-  onChangeTable,
   onOrderAcknowledged,
 }) => {
   const { language, t } = useLanguage();
@@ -92,29 +88,10 @@ export const WaiterOrderSlipModal: React.FC<WaiterOrderSlipModalProps> = ({
               </div>
             </div>
 
-            {/* Interactive Table Number Selector */}
-            <div className="flex items-center justify-center gap-1.5 flex-wrap pt-1">
-              <span className="text-2xs font-semibold text-stone-500 dark:text-stone-400 uppercase">Table:</span>
-              {['Table 1', 'Table 2', 'Table 3', 'Table 4', 'Table 5', 'Takeaway'].map((tbl) => (
-                <button
-                  key={tbl}
-                  type="button"
-                  onClick={() => onChangeTable?.(tbl)}
-                  className={`px-2 py-0.5 rounded-lg text-2xs font-bold transition active:scale-95 cursor-pointer ${
-                    tableNumber === tbl
-                      ? 'bg-red-600 text-white shadow-xs'
-                      : 'bg-stone-200/80 hover:bg-stone-300 dark:bg-neutral-850 dark:hover:bg-neutral-800 text-stone-700 dark:text-stone-300'
-                  }`}
-                >
-                  {tbl}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex justify-between text-2xs text-stone-500 dark:text-stone-400 pt-1 px-1">
-              <span>TABLE: <strong className="text-stone-800 dark:text-stone-200">{tableNumber}</strong></span>
-              <span>ITEMS: <strong>{totalItemCount}</strong></span>
-              <span>TIME: <strong>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</strong></span>
+            <div className="flex justify-between items-center text-2xs text-stone-500 dark:text-stone-400 pt-2 px-1 border-t border-stone-200/70 dark:border-neutral-800/70">
+              <span>ITEMS: <strong className="text-stone-800 dark:text-stone-200">{totalItemCount}</strong></span>
+              <span>TOTAL: <strong className="text-red-600 dark:text-red-400 font-bold">€{total.toFixed(2)}</strong></span>
+              <span>TIME: <strong className="text-stone-800 dark:text-stone-200">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</strong></span>
             </div>
           </div>
 

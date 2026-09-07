@@ -29,7 +29,6 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Modals state
-  const [tableNumber, setTableNumber] = useState<string>('Table 1');
   const [selectedDishForDetail, setSelectedDishForDetail] = useState<MenuItem | null>(null);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [isWaiterSlipOpen, setIsWaiterSlipOpen] = useState<boolean>(false);
@@ -655,7 +654,7 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto border-t border-stone-200 dark:border-neutral-800/80 mt-6 pt-6 flex flex-col sm:flex-row items-center justify-between text-2xs text-stone-500 gap-3">
           <p>© {new Date().getFullYear()} Momoda Asian Street Food, Edgeworthstown. All rights reserved.</p>
-          <p>Digital Dining & Table Order Slip System</p>
+          <p>Digital Dining & Guest Order Slip System</p>
         </div>
       </footer>
 
@@ -682,8 +681,6 @@ export default function App() {
         isOpen={isWaiterSlipOpen}
         onClose={() => setIsWaiterSlipOpen(false)}
         cartItems={cartItems}
-        tableNumber={tableNumber}
-        onChangeTable={setTableNumber}
         onOrderAcknowledged={handleWaiterAcknowledged}
       />
 
