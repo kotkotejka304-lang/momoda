@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MenuItem } from '../types';
 import { X, Flame, Plus, Minus, Check, AlertTriangle, SlidersHorizontal } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
-import { getLocalizedDish } from '../i18n/dishTranslations';
+import { getLocalizedDish, getLocalizedOptionGroup, getLocalizedOptionChoice } from '../i18n/dishTranslations';
 
 interface DishDetailModalProps {
   item: MenuItem | null;
@@ -170,7 +170,7 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
                   <div key={optionGroup.name} className="space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-bold text-stone-800 dark:text-stone-200">
-                        {optionGroup.name}
+                        {getLocalizedOptionGroup(optionGroup.name, language)}
                       </span>
                       {optionGroup.required && (
                         <span className="text-2xs px-2 py-0.5 bg-red-100 text-red-700 dark:bg-red-950/80 dark:text-red-400 rounded-full font-semibold border border-red-200 dark:border-red-700/40">
@@ -200,7 +200,7 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
                               }`}>
                                 {isSelected && <Check className="w-2.5 h-2.5 stroke-[3]" />}
                               </span>
-                              <span>{choice.label}</span>
+                              <span>{getLocalizedOptionChoice(choice.label, language)}</span>
                             </div>
                             {choice.extraPrice ? (
                               <span className={`text-2xs font-semibold ${isSelected ? 'text-red-600 dark:text-red-400' : 'text-stone-500 dark:text-stone-400'}`}>

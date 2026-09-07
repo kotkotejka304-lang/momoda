@@ -2,7 +2,7 @@ import React from 'react';
 import { CartItem } from '../types';
 import { X, Trash2, Plus, Minus, Smartphone, ShoppingBag, UtensilsCrossed, CupSoda } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
-import { getLocalizedDish } from '../i18n/dishTranslations';
+import { getLocalizedDish, getLocalizedOptionChoice } from '../i18n/dishTranslations';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -113,7 +113,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       {Object.entries(cartItem.selectedOptions).length > 0 && (
                         <div className="text-2xs text-stone-500 dark:text-stone-400 line-clamp-2">
                           {Object.entries(cartItem.selectedOptions)
-                            .map(([_, val]) => val)
+                            .map(([_, val]) => getLocalizedOptionChoice(String(val), language))
                             .join(' • ')}
                         </div>
                       )}

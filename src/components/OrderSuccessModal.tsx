@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckCircle2, Utensils } from 'lucide-react';
 import { CartItem } from '../types';
 import { useLanguage } from '../i18n/LanguageContext';
-import { getLocalizedDish } from '../i18n/dishTranslations';
+import { getLocalizedDish, getLocalizedOptionChoice } from '../i18n/dishTranslations';
 
 interface OrderSuccessModalProps {
   isOpen: boolean;
@@ -84,7 +84,7 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
                       )}
                       {Object.entries(it.selectedOptions).length > 0 && (
                         <span className="block text-2xs text-stone-500 dark:text-stone-400">
-                          {Object.values(it.selectedOptions).join(', ')}
+                          {Object.values(it.selectedOptions).map((val) => getLocalizedOptionChoice(String(val), language)).join(', ')}
                         </span>
                       )}
                     </div>

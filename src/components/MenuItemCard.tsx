@@ -91,7 +91,7 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
             </h3>
           </div>
 
-          <p className="text-xs text-stone-600 dark:text-stone-400 line-clamp-2 mt-1 leading-relaxed hidden sm:block">
+          <p className="text-2xs sm:text-xs text-stone-600 dark:text-stone-400 line-clamp-2 mt-0.5 sm:mt-1 leading-relaxed">
             {localized.description}
           </p>
 

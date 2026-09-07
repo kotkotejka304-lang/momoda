@@ -3,7 +3,7 @@ import { CartItem } from '../types';
 import { X, CheckCircle2, Utensils, Check, Smartphone } from 'lucide-react';
 import { MomodaLogo } from './MomodaLogo';
 import { useLanguage } from '../i18n/LanguageContext';
-import { getLocalizedDish } from '../i18n/dishTranslations';
+import { getLocalizedDish, getLocalizedOptionChoice } from '../i18n/dishTranslations';
 
 interface WaiterOrderSlipModalProps {
   isOpen: boolean;
@@ -145,7 +145,7 @@ export const WaiterOrderSlipModal: React.FC<WaiterOrderSlipModalProps> = ({
                         {Object.entries(cartItem.selectedOptions).length > 0 && (
                           <div className="text-2xs text-stone-500 dark:text-stone-400 mt-0.5">
                             {Object.entries(cartItem.selectedOptions)
-                              .map(([_, val]) => `• ${val}`)
+                              .map(([_, val]) => `• ${getLocalizedOptionChoice(String(val), language)}`)
                               .join(' ')}
                           </div>
                         )}
